@@ -21,7 +21,7 @@ public class StockController {
         return stockService.getStockById(id);
     }
 
-    @PostMapping
+    @PostMapping(consumes = "application/json")
     public Stock createStock(@RequestBody Stock stock) {
         return stockService.createStock(stock);
     }

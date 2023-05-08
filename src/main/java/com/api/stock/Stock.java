@@ -10,7 +10,7 @@ public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String ticket;
+    private String ticker;
     private String name;
     private String sector;
     private Double price;
@@ -18,8 +18,8 @@ public class Stock {
     public Stock() {
     }
 
-    public Stock(String ticket, String name, String sector, Double price) {
-        this.ticket = ticket;
+    public Stock(String ticker, String name, String sector, Double price) {
+        this.ticker = ticker;
         this.name = name;
         this.sector = sector;
         this.price = price;
@@ -34,12 +34,12 @@ public class Stock {
         return id;
     }
 
-    public String getTicket() {
-        return ticket;
+    public String getTicker() {
+        return ticker;
     }
 
-    public void setTicket(String ticket) {
-        this.ticket = ticket;
+    public void setTicker(String ticker) {
+        this.ticker = ticker;
     }
 
     public String getName() {

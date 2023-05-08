@@ -25,7 +25,7 @@ public class StockService {
 
     public Stock updateStock(Long id, Stock stock) {
         Stock existingStock = getStockById(id);
-        existingStock.setTicket(stock.getTicket());
+        existingStock.setTicker(stock.getTicker());
         existingStock.setName(stock.getName());
         existingStock.setSector(stock.getSector());
         existingStock.setPrice(stock.getPrice());
@@ -38,6 +38,6 @@ public class StockService {
     }
 
     public List<Stock> searchStocks(String keyword) {
-        return stockRepository.findByNameContainingOrTicketContaining(keyword, keyword);
+        return stockRepository.findByNameContainingOrTickerContaining(keyword, keyword);
     }
 }
