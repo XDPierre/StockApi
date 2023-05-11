@@ -15,5 +15,7 @@ services:
     ports:
       - "3307:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=Imapreda
+      - MYSQL_ROOT_PASSWORD=Imapreda
+      - MYSQL_DATABASE=apistock
+    volumes:
+      - ./mydb.sql:/docker-entrypoint-initdb.d/mydb.sql
