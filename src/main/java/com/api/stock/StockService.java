@@ -1,6 +1,7 @@
 package com.api.stock;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -16,7 +17,8 @@ public class StockService {
     }
 
     public Stock getStockById(Long id) {
-        return stockRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Stock not found"));
+        return stockRepository.findById(id)
+                .orElseThrow(() -> new StockNotFoundException(HttpStatus.NOT_FOUND, "Stock não encontrado com id: " + id));
     }
 
     public Stock createStock(Stock stock) {
