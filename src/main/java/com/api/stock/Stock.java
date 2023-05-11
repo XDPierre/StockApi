@@ -7,9 +7,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Stock {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+    private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
     private String ticker;
     private String name;
     private String sector;
@@ -25,11 +24,6 @@ public class Stock {
         this.price = price;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Id
     public Long getId() {
         return id;
     }
