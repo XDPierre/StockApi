@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk AS build
+FROM openjdk:11-jdk AS base
 
 ENV MAVEN_VERSION 3.9.1
 ENV MAVEN_HOME /usr/share/maven
@@ -12,8 +12,12 @@ WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline
 
+FROM base AS build
+
 COPY src/ /app/src/
 RUN mvn package -DskipTests
+
+FROM openjdk:11-jdk AS final
 
 COPY --from=build /app/target/stock-0.0.1-SNAPSHOT.jar /app/stock.jar
 

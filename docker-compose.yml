@@ -10,6 +10,12 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/apistock
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=Imapreda
+    healthcheck:
+          test: [ "CMD", "curl", "-f", "http://localhost:8080/health" ]
+          interval: 1m
+          timeout: 10s
+          retries: 3
+    restart: always
   db:
     image: mysql:8.0
     ports:
@@ -19,3 +25,9 @@ services:
       - MYSQL_DATABASE=apistock
     volumes:
       - ./mydb.sql:/docker-entrypoint-initdb.d/mydb.sql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+    restart: always
